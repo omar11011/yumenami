@@ -1,0 +1,30 @@
+<%- include('partials/header') %>
+    
+    <%- include('partials/navbar') %>
+
+    <div class="container p-5">
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="text-center">
+                <span>Puedes descargar las preguntas dando click en el siguiente botón: </span>
+                <a href="/downloads/questions.txt" download="questions.txt" class="btn btn-primary ms-2">Descargar</a>
+            </div>
+        </div>
+        <div class="row pt-5">
+            <% typeOfData.map(e => { %>
+                <div class="col-md-4 col-12">
+                    <div class="card mb-3">
+                        <h4 class="card-header">Descargar datos (.<%= e %>)</h4>
+                        <div class="d-flex justify-content-center pt-3">
+                            <img src="/images/<%= e %>.png" class="d-block" height="100%" width="150">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Este archivo <%= e.toLowerCase() %> contiene <%= numberOfData %> datos actualizados.</p>
+                            <a href="/downloads/data.<%= e %>" class="btn btn-primary btn-block" download="data.<%= e %>">Descargar</a>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,49 @@
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <img src="/images/banner-economics-challenge.jpg" class="card-img-top" alt="Economics Challenge">
+                <div class="card-body">
+                    <p class="text-center">Este formulario ya no acepta más respuestas en este momento.</p>
+                    <h2 class="card-title text-center">FORMULARIO</h2>
+                    <p class="card-text">¿Cómo afecta tener obras inconclusas a los niños que asisten al colegio?</p>
+                    <form action="/api/create" method="post">
+                        <div class="section mb-4">
+                            <h5>DATOS DEL ESTUDIANTE</h5>
+                            <div class="form-group pt-2">
+                                <label for="edad">Edad:</label>
+                                <input type="number" class="form-control" id="edad" name="age" required>
+                            </div>
+                            <div class="form-group pt-2">
+                                <label for="colegio">Colegio:</label>
+                                <input type="text" class="form-control" id="colegio" name="school" required>
+                            </div>
+                            <div class="form-group pt-2">
+                                <label for="tipo_colegio">Tipo Colegio:</label>
+                                <input type="text" class="form-control" id="tipo_colegio" name="typeOfSchool" required>
+                            </div>
+                            <div class="form-group pt-2">
+                                <label for="distrito">Distrito:</label>
+                                <input type="text" class="form-control" id="distrito" name="district" required>
+                            </div>
+                        </div>
+                
+                        <% for (let i = 0; i < questions.length; i++) { %>
+                            <div class="section mb-4">
+                                <h5><%= questions[i].section %></h5>
+                                <% for (let j = 0; j < questions[i].questions.length; j++) { %>
+                                    <div class="form-check form-switch pt-2">
+                                        <input type="checkbox" class="form-check-input" id="p<%= 5 * i + (j + 1) %>" name="p<%= 5 * i + (j + 1) %>">
+                                        <label class="form-check-label" for="p<%= 5 * i + (j + 1) %>"><%= questions[i].questions[j] %></label>
+                                    </div>
+                                <% } %>
+                            </div>
+                        <% } %>
+                
+                        <button type="submit" disabled class="btn btn-primary btn-block">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
