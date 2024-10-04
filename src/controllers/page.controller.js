@@ -22,7 +22,7 @@ const FormPage = (req, res) => {
 
 const DataPage = async (req, res) => {
     const datos = await Survey.find({}).select('-createdAt -updatedAt -__v').lean()
-
+    console.log(datos.length)
     try {
         createFolder()
         convertToJson(datos)

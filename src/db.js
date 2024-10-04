@@ -3,7 +3,7 @@ const { set, connect } = require('mongoose')
 module.exports = async () => {
     try {
         set('strictQuery', true)
-        connect('mongodb://127.0.0.1:27017/yumenami', {})
+        connect(process.env.MONGODB_URI, {})
         .then(async () => {
             console.log('Conexión exitosa a MongoDB')
         })
