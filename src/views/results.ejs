@@ -1,0 +1,49 @@
+<%- include('partials/header') %>
+    
+    <%- include('partials/navbar') %>
+
+    <div class="row">
+        <div class="col-12 d-block d-sm-none container-fluid p-5">
+            Para ver los colegios encuestrados ingresa desde modo escritorio.
+        </div>
+        <div class="col-12 d-none d-sm-block container-fluid px-5 pt-5">
+            <h3>COLEGIOS ENCUESTADOS</h3>
+            <div class="row pt-2">
+                <% schools.map(e => { %>
+                    <div class="col-md-3 card m-3" style="max-width: 20rem;">
+                        <div class="card-header"><%= e.name %></div>
+                        <div class="card-body">
+                            <p class="card-text">Tipo: <%= e.type %><br>Provincia: <%= e.province %><br>Encuestados: <%= e.count %></p>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid px-5 py-3">
+        <h3>RESULTADOS</h3>
+        <div class="accordion pt-3" id="accordionExample">
+        <% results.map((e, i) => { %>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-<%= i %>">
+                    <button class="accordion-button collapsed" type="button" data-toggle="collapse" data-target="#collapse-<%= i %>" aria-expanded="false" aria-controls="collapse-<%= i %>">
+                        <%= e.section %>
+                    </button>
+                </h2>
+                <div id="collapse-<%= i %>" class="accordion-collapse collapse" aria-labelledby="heading-<%= i %>" data-parent="#accordionExample">
+                    <% e.questions.map(q => { %>
+                        <div class="accordion-body">
+                            <strong><%= q.question %></strong> <span class="badge bg-primary rounded-pill"><%= q.percentage %>%</span>
+                            <div class="progress mt-2">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: <%= q.percentage %>%;" aria-valuenow=<%= q.percentage.yes %> aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        <% }) %>
+        </div>
+    </div>
+
+<%- include('partials/footer') %>
