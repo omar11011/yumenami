@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col-12 d-block d-sm-none container-fluid p-5">
-            Para ver los colegios encuestrados ingresa desde modo escritorio.
+            Para ver los colegios encuestados ingresa desde el modo escritorio.
         </div>
         <div class="col-12 d-none d-sm-block container-fluid px-5 pt-5">
             <h3>COLEGIOS ENCUESTADOS</h3>
@@ -23,6 +23,8 @@
 
     <div class="container-fluid px-5 py-3">
         <h3>RESULTADOS</h3>
+        <span>Descarga aquí la ficha de encuesta: </span>
+        <a href="/downloads/encuesta.docx" download="encuesta.docx" class="btn btn-primary ms-2">Descargar</a>
         <div class="accordion pt-3" id="accordionExample">
         <% results.map((e, i) => { %>
             <div class="accordion-item">
